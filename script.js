@@ -41,37 +41,26 @@ function load()
 for(i=0;i<result.length;i++)
 {
     var col_img=document.createElement('div');
-    col_img.setAttribute('class','offset-2 col-4');
+    col_img.setAttribute('class','col-3 layout');
     var image=document.createElement('img');
     if(result[i].show.image!=null)
     {
         
     image.setAttribute('src',result[i].show.image.medium);
     image.setAttribute('alt',result[i].show.name);
-    image.setAttribute('class',"img-thumbnail");
-    image.setAttribute('width','300');
-    image.setAttribute('height','200');
     }
     col_img.appendChild(image);
-
-    var col_desc=document.createElement('div');
-    col_desc.setAttribute('class','col-6 layout');
-
-    var genre=document.createElement('p');
-    genre.innerText="Genere: "+result[i].show.genres.join(",")
-    var premiere=document.createElement('p');
-    premiere.innerText="Premiered: "+result[i].show.premiered;
+    var desc=document.createElement('p');
+    desc.innerHTML="Genere: "+result[i].show.genres.join(",")+"<br>"+"Premiered: "+result[i].show.premiered+"<br>Timings: "+result[i].show.schedule.time+"<br>"
+                    +"Days: "+result[i].show.schedule.days
     if(result[i].show.network!=null)
     {
         var country=document.createElement('p');
        country.innerText="Streaming Country:"+result[i].show.network.country.name  
+       col_img.appendChild(country);
     }
-    var timing=document.createElement('p');
-    timing.innerText="Timings: "+result[i].show.schedule.time;
-    var days=document.createElement('p');
-    days.innerText="Days: "+result[i].show.schedule.days;
-    col_desc.append(genre,premiere,country,timing,days) 
-    row.append(col_img,col_desc); 
+    col_img.appendChild(desc);
+    row.append(col_img); 
 }
  });
 
@@ -87,37 +76,26 @@ function date_load()
 for(i=0;i<result.length;i++)
 {
     var col_img=document.createElement('div');
-    col_img.setAttribute('class','offset-2 col-4');
+    col_img.setAttribute('class','col-3 layout');
     var image=document.createElement('img');
     if(result[i]._embedded.show.image!=null)
     {
-       
+        
     image.setAttribute('src',result[i]._embedded.show.image.medium);
     image.setAttribute('alt',result[i]._embedded.show.name);
-    image.setAttribute('class',"img-thumbnail");
-    image.setAttribute('width','300');
-    image.setAttribute('height','200');
     }
     col_img.appendChild(image);
-
-    var col_desc=document.createElement('div');
-    col_desc.setAttribute('class','col-6 layout');
-
-    var genre=document.createElement('p');
-    genre.innerText="Genere: "+result[i]._embedded.show.genres.join(",")
-    var premiere=document.createElement('p');
-    premiere.innerText="Premiered: "+result[i]._embedded.show.premiered;
+    var desc=document.createElement('p');
+    desc.innerHTML="Genere: "+result[i]._embedded.show.genres.join(",")+"<br>"+"Premiered: "+result[i]._embedded.show.premiered+"<br>Timings: "+
+    result[i]._embedded.show.schedule.time+"<br>"+"Days: "+result[i]._embedded.show.schedule.days
     if(result[i]._embedded.show.network!=null)
     {
         var country=document.createElement('p');
        country.innerText="Streaming Country:"+result[i]._embedded.show.network.country.name  
+       col_img.appendChild(country);
     }
-    var timing=document.createElement('p');
-    timing.innerText="Timings: "+result[i]._embedded.show.schedule.time;
-    var days=document.createElement('p');
-    days.innerText="Days: "+result[i]._embedded.show.schedule.days;
-    col_desc.append(genre,premiere,country,timing,days) 
-    row.append(col_img,col_desc); 
+    col_img.appendChild(desc);
+    row.append(col_img); 
 }
  });
 
